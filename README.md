@@ -49,8 +49,6 @@ The pipeline automates:
 Configure the bucket policy to allow public read access for objects:
 
 ```json
-json
-Copy code
 {
   "Version": "2012-10-17",
   "Statement": [
