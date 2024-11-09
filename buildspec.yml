@@ -9,8 +9,7 @@ phases:
       - bundle install
   build:
     commands:
-      - bundle exec jekyll build -d build_output
-artifacts:
-  files:
-    - '**/*'
-  base-directory: 'build_output'
+      - bundle exec jekyll build
+  post_build:
+      commands:
+        - aws s3 cp _site s3://my-jekyll-site-bucket/resume/ --recursive
