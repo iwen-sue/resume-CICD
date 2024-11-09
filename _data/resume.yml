@@ -1,51 +1,58 @@
 title: Résumé
-name: YOUR NAME
-jobtitle: Your Job Title
+name: I-Wen Su
+jobtitle: Software Developer
 contact:
   - icon: fa-envelope
-    text: youremail@example.com
+    text: grace2268@hotmail.com
   - icon: fa-phone-square
-    text: your-phone-num
+    text: 778-862-9961
   - icon: fa-globe
-    text: your-website.com
-    link: https://crispgm.github.io/resume/resume.html
+    text: grace-su.com
+    link: https://grace-su.com
   - icon: fa-github
-    text: your-github
-    link: https://github.com/crispgm/resume
+    text: iwen-sue
+    link: https://github.com/iwen-sue/
 education:
-  - university: Your First University
-    duration: Jul 2011 - Dec 2012
-    location: Consectetur adipiscing elit
-    major: Lorem ipsum dolor sit amet
-  - university: Your Second University
-    duration: Aug 2007 - Jun 2011
-    location: Ut enim ad minim veniam
-    major: Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+  - university: British Columbia Institute of Technology
+    duration: Jan 2023 - Dec 2024
+    location: Vancouver, Canada
+    major: Computer Systems Technology
+  - university: Shih-Chien University
+    duration: Sep 2010 - Jul 2014
+    location: Taiwan, Taipei
+    major: Industrial and Product Design
 skills:
-  - title: Skill Group 1
-    items: Lorem, Ipsum, Dolor, Sit, Amet
-  - title: Skill Group 2
-    items: Consectetur, Adipiscing, Elit
-  - title: Skill Group 3
-    items: Sed do, Eiusmod, Tempor, Incididunt
+  - title: Programming Languages
+    items: C/C++, Java, Python, HTML/CSS, JavaScript/Typescript, React, SQL
+  - title: System Design
+    items: Linux/Unix, Design Patterns, SDLC, OOP, Database Design, concurrency programming
+  - title: Other
+    items: Git, Cloud Computing, Adobe Suit
 experience:
-  - title: Job Title 1
-    duration: Apr 2016 - Now
-    company: Your 1st, Inc.
+  - title: Coder
+    duration: Jun 2024 - Now
+    company: Outlier.ai | US
     description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  - title: Job Title 2
-    duration: Apr 2013 - Mar 2016
-    company: Your 2nd, Inc.
+  - title: Data Engineering intern
+    duration: Jun 2024 - Sep 2024
+    company: Max Mara | Italy
     description: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  - title: Job Title 3
-    duration: Dec 2011 - Mar 2012
-    company: Your 3rd Co, Ltd.
+  - title: Luxurious Sales Consultant
+    duration: Sep 2020 - Oct 2023
+    company: Max Mara | Vancouver
+    description: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  - title: Industrial Designer
+    duration: Aug 2014 - Jun 2020
+    company: Hon Hai (Foxconn) Technology Group | China, Taiwan
     description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 projects:
-  - name: Project Name 1
+  - name: Clippio
+    description: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    contribution: Creator.
+  - name: Stack Moxie
     description: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     contribution: Contributor.
-  - name: Project Name 2
+  - name: Vacapal
     description: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     contribution: Creator and maintainer.
 languages:
