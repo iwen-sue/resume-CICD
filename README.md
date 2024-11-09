@@ -1,188 +1,224 @@
-# Crisp Minimal Résumé
+# **Jekyll CI/CD Pipeline Using AWS CodePipeline**
 
-<p align="center">
-  <img src="screenshots/resume-desktop.png" width="578" />
-  <img src="screenshots/resume-mobile.png" width="220" />
-</p>
+This documentation outlines the architecture, setup steps, and maintenance practices for a CI/CD pipeline that automates the deployment of a Jekyll site hosted in an **Amazon S3** bucket, using **AWS CodePipeline** and **GitHub** as the source repository.
 
-<p align="center">
-  <img src="https://github.com/crispgm/resume/workflows/build/badge.svg" alt="GitHub CI" />
-  <a href="https://badge.fury.io/rb/jekyll-theme-minimal-resume">
-    <img src="https://badge.fury.io/rb/jekyll-theme-minimal-resume.svg" alt="Gem Version" />
-  </a>
-  <a href="https://badge.fury.io/js/hexo-theme-crisp-minimal-resume">
-    <img src="https://badge.fury.io/js/hexo-theme-crisp-minimal-resume.svg" alt="npm version" />
-  </a>
-</p>
+---
 
-## Introduction
+## **Pipeline Architecture**
 
-[English](/README.md) [简体中文](/README_zh-CN.md)
+### **Overview**
 
-This is a responsive minimal résumé template made by Crisp, powered by [Jekyll](http://jekyllrb.com/). And we also provide an official [Hexo port](/port-hexo/README.md) for Hexo users.
+The pipeline automates:
 
-You may config all the data in `yaml` and make it your own résumé. Then, you might use on GitHub Pages, your website, or wherever you want.
+1. **Source Management**: Fetching code from a GitHub repository.
+2. **Build Process**: Running Jekyll to generate static files.
+3. **Deployment**: Uploading the generated static files to an S3 bucket under a specified folder.
 
-[DEMO](https://crispgm.github.io/resume/resume.html)
+### **Architecture Diagram**
 
-## Features
-
-- Simple, elegant, and minimal design
-- PC and mobile friendly, but it looks better on PC
-- PDF supports and print friendly
-- Flexible and extensible
-
-## Usage
-
-### Local Mode
-
-1. Clone the repo
-
-   ```shell
-   git clone https://github.com/crispgm/resume.git
-   ```
-
-2. Install Jekyll
-
-   ```shell
-   gem install jekyll
-   ```
-
-3. Config your résumé data
-
-   The `baseurl` is required in `_config.yml` if you serve this page as part of your website. And your contact information, **EDUCATION**, **SKILLS**, **EXPERIENCE**, and **PROJECTS** data will be set in `_data/resume.yml`.
-
-4. Run and Debug
-
-   ```shell
-   jekyll serve
-   ```
-
-5. Build
-
-   ```shell
-   jekyll build
-   ```
-
-### Gem-based Theme
-
-1. Create a `Gemfile`
-
-   ```shell
-   source "https://rubygems.org"
-
-   gem "jekyll-theme-minimal-resume"
-   ```
-
-   And then,
-
-   ```shell
-   bundle install
-   ```
-
-2. Init `_config.yml`
-
-   ```yaml
-   title: Résumé Title
-   baseurl: "/resume/"
-   theme: "jekyll-theme-minimal-resume"
-   ```
-
-3. Create a `index.html`
-
-   ```yaml
-   ---
-   layout: resume
-   ---
-
-   ```
-
-4. Create `_data/resume.yml` and fill in your resume data. [Example data is available here](/_data/resume.ytml).
-
-## Data Format
-
-### Contact
-
-```yaml
-contact:
-  - icon: fa-envelope
-    text: youremail@example.com
-  - icon: fa-phone-square
-    text: your-phone-num
-  - icon: fa-globe
-    text: your-website.com
-    link: https://crispgm.github.io/resume/resume.html
+```python
++-----------------+             +------------------+             +---------------------+
+|   GitHub Repo   |             |  AWS CodeBuild   |             |        S3           |
+|  (Source Code)  |    --->     |  (Generate Site) |    --->     |  (Host /resume)     |
++-----------------+             +------------------+             +---------------------+
+       Webhook                         Buildspec                          Static Site
 ```
 
-FontAwesome iconfont is embedded, so use the `fa-` class name as icon. `link` is optional, present if you want a link for your web version.
+### **AWS Services Used**
 
-## Colors
+1. **CodePipeline**: Orchestrates the pipeline workflow.
+2. **CodeBuild**: Builds the Jekyll site and organizes files.
+3. **S3**: Hosts the static website and serves it publicly.
 
-There are a set of colorscheme. `color` may be specified in `_config.yml`. The default colorscheme is gray.
+---
 
-```yaml
-color: gray
+## **Pipeline Setup**
+
+### **Step 1: Prepare AWS Resources**
+
+### **1. Create an S3 Bucket**
+
+- Log in to the AWS Management Console.
+- Navigate to **S3**.
+- Create a bucket (e.g., `my-jekyll-site-bucket`).
+- Enable **Static Website Hosting** under the bucket's **Properties**.
+- Set the **Index Document** to `resume/index.html`.
+
+### **2. Set Up S3 Bucket Permissions**
+
+Configure the bucket policy to allow public read access for objects:
+
+```json
+json
+Copy code
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicReadGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::my-jekyll-site-bucket/*"
+    }
+  ]
+}
 ```
 
-Colors powered by [Open-Color](https://yeun.github.io/open-color/):
+---
 
-- red
-- pink
-- grape
-- violet
-- indigo
-- blue
-- cyan
-- teal
-- green
-- lime
-- yellow
-- orange
+### **3. Create an IAM Role for CodePipeline**
 
-Colors powered by [Nord](https://www.nordtheme.com/):
+Create a service role for **CodePipeline**:
 
-- nord
+- Attach the managed policy `AWSCodePipelineFullAccess`.
 
-<img src="screenshots/resume-with-color.png" width="578" />
+### **4. Create an IAM Role for CodeBuild**
 
-## Extending Sections
+Create a service role for **CodeBuild**:
 
-1. Add new section in `_data/resume.yml`
+- Attach the managed policies:
+    - `AWSCodeBuildDeveloperAccess`
+    - `AmazonS3FullAccess`
 
-   ```yaml
-   languages:
-     - name: English
-       proficiency: Professional working proficiency
-     - name: Mandarin Chinese
-       proficiency: Native or bilingual proficiency
-   ```
+---
 
-2. Add section to `_layouts/resume.html`:
+### **Step 2: Set Up the Pipeline**
 
-   ```html
-   <section id="languages">
-     <div class="section-title">Language</div>
-     <div class="section-content">
-       {% for lang in site.data.resume.languages %}
-       <div class="block">
-         <div class="block-title">{{ lang.name }}</div>
-         <div class="block-content">{{ lang.proficiency }}</div>
-       </div>
-       {% endfor %}
-     </div>
-   </section>
-   ```
+### **1. Create a CodePipeline**
 
-## Showcases
+- Navigate to **CodePipeline** in the AWS Management Console.
+- Click **Create Pipeline** and provide a name (e.g., `JekyllPipeline`).
 
-Feel free to add yours here.
+### **Source Stage (GitHub)**
 
-- [David Zhang](https://crispgm.com/resume/)
+- **Source Provider**: Select **GitHub Version 2**.
+- **Connect to GitHub**: Authenticate and select the repository and branch (e.g., `main`).
+- Set up a **webhook** for automatic triggers.
 
-## Donation
+### **Build Stage (CodeBuild)**
 
-- [Buy Me A Coffee](https://www.buymeacoffee.com/crispgm)
+- **Build Provider**: Select **AWS CodeBuild**.
+- **Create a CodeBuild Project**:
+    - Environment:
+        - Runtime: Ubuntu with Ruby support.
+        - Image: `aws/codebuild/standard:5.0` (or latest).
+    - **Buildspec File**: Select "Use a buildspec file."
 
-## License
+### **Deploy Stage (S3)**
 
-[![license](https://img.shields.io/github/license/crispgm/resume.svg)](/LICENSE)
+- **Deploy Provider**: Select **Amazon S3**.
+- Specify the target bucket (e.g., `my-jekyll-site-bucket`) and folder (`resume`).
+
+---
+
+### **Step 3: Configure Buildspec File**
+
+Add the following `buildspec.yml` file to your GitHub repository root:
+
+```yaml
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      ruby: 2.7
+    commands:
+      - gem install bundler
+      - bundle install
+  build:
+    commands:
+      - bundle exec jekyll build
+      - mkdir -p build_output/resume
+      - mv _site/* build_output/resume
+artifacts:
+  files:
+    - '**/*'
+  base-directory: 'build_output'
+```
+
+---
+
+### **Step 4: Deploy and Test**
+
+1. Push changes to the GitHub repository.
+2. Monitor the pipeline in the AWS Console.
+3. Access the site:
+    
+    ```bash
+    http://your-bucket-name.s3-website-region.amazonaws.com/resume/resume.html
+    ```
+    
+
+---
+
+## **Pipeline Maintenance**
+
+### **1. Monitor Pipeline Execution**
+
+- Use the **CodePipeline Console** to monitor each stage.
+- Check logs for failed builds in the **CodeBuild Console**.
+
+### **2. Update the Pipeline**
+
+- **Source Changes**:
+    - Modify the GitHub branch or repository in the pipeline source stage.
+- **Build Changes**:
+    - Update the `buildspec.yml` file to include new build steps.
+- **Deployment Changes**:
+    - Adjust S3 bucket or folder configurations in the deployment stage.
+
+### **3. Manage Dependencies**
+
+- Periodically update Ruby gems in your project by running:
+    
+    ```bash
+    bundle update
+    ```
+    
+
+### **4. Performance Optimization**
+
+- Enable **CloudFront** for faster content delivery.
+- Add caching policies for S3 objects.
+
+### **5. Cost Management**
+
+- Monitor usage costs using the **AWS Cost Explorer**.
+- Enable **S3 Object Expiration** to clean up old files.
+
+### **6. Security Best Practices**
+
+- Regularly review and limit IAM roles’ permissions.
+- Enable **S3 Server Access Logging** for audit purposes.
+
+---
+
+## **Common Issues and Troubleshooting**
+
+| **Issue** | **Cause** | **Solution** |
+| --- | --- | --- |
+| Build fails in CodeBuild | Missing dependencies or incorrect commands | Check the logs in CodeBuild and verify the `buildspec.yml`. |
+| Deployment to S3 fails | Insufficient permissions for the S3 bucket | Ensure CodeBuild and CodePipeline roles have `AmazonS3FullAccess`. |
+| Site not accessible publicly | S3 bucket permissions are misconfigured | Update the bucket policy to allow public `s3:GetObject` access. |
+| Changes not reflecting | Old files cached by CloudFront | Invalidate the CloudFront cache or use a versioned URL for static assets. |
+
+---
+
+## Current Completions
+
+1. Hosted Website
+2. Version Control System
+3. CI/CD Pipeline Setup
+4. Documentation
+
+## **Future Enhancements**
+
+1. **Add Testing**:
+    - Integrate testing tools (e.g., HTML validation) into the pipeline.
+2. **CloudFront with SSL**:
+    - Use Amazon CloudFront for HTTPS and faster delivery.
+3. **Multi-Environment Support**:
+    - Set up separate pipelines for staging and production.
+4. **Automate Pipeline Updates**:
+    - Use AWS CloudFormation to define and manage the pipeline as code.
