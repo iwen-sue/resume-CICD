@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      ruby: 2.3
+      ruby: 3.3
     commands:
       - gem install bundler
       - bundle install
