@@ -9,7 +9,7 @@ phases:
       - bundle install
   build:
     commands:
-      - bundle exec jekyll build -d build_output
+      - bundle exec jekyll build
       - mkdir -p build_output/resume
       - mv _site/* build_output/resume
 artifacts:
