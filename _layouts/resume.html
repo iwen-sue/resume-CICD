@@ -48,6 +48,24 @@ layout: default
         </div>
       </section>
 
+      <section id="skills">
+        <div class="section-title">
+          Skills
+        </div>
+        <div class="section-content">
+          {% for skill in site.data.resume.skills %}
+          <div class="block">
+            <div class="block-title">
+              {{ skill.title }}
+            </div>
+            <div class="block-content">
+              {{ skill.items }}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+
       <section id="projects">
         <div class="section-title">
           Projects
@@ -60,6 +78,10 @@ layout: default
             </div>
             <div class="block-subtitle">
               {{ project.contribution }}
+            </div>
+            <div class="block-stack">
+              {{ project.stack }}
+              <br><br>
             </div>
             <div class="block-content">
               {{ project.description }}
@@ -89,26 +111,6 @@ layout: default
           {% endfor %}
         </div>
       </section>
-
-      <section id="skills">
-        <div class="section-title">
-          Skills
-        </div>
-        <div class="section-content">
-          {% for skill in site.data.resume.skills %}
-          <div class="block">
-            <div class="block-title">
-              {{ skill.title }}
-            </div>
-            <div class="block-content">
-              {{ skill.items }}
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-      </section>
-
-      
 
       <section id="languages">
         <div class="section-title">

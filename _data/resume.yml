@@ -1,5 +1,5 @@
 title: Résumé
-name: I-Wen Su
+name: Grace Su
 jobtitle: Software Developer
 contact:
   - icon: fa-envelope
@@ -23,38 +23,59 @@ education:
     major: Industrial and Product Design
 skills:
   - title: Programming Languages
-    items: C/C++, Java, Python, HTML/CSS, JavaScript/Typescript, React, SQL
+    items: Python, C/C++, Java, HTML/CSS, JavaScript/Typescript, SQL, R
   - title: System Design
-    items: Linux/Unix, Design Patterns, SDLC, OOP, Database Design, concurrency programming
-  - title: Other
-    items: Git, Cloud Computing, Adobe Suit
+    items: Design Patterns, SDLC, OOP, Database Design, concurrency programming
+  - title: DevOps
+    items: Linux/Unix, Git, AWS, Azure, CI/CD
+  - title: Frameworks
+    items: React, Next, EJS, Tailwind CSS, Bootstrap, Node, Flask, Express
 experience:
-  - title: Coder
+  - title: Coding Expertise for AI Training - Python, Javascript, Java, C#, C
     duration: Jun 2024 - Now
-    company: Outlier.ai | US
-    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    company: Outlier.ai | Remote
+    description: Evaluated AI-generated code for accuracy and efficiency, enhancing model reliability and usability by identifying bugs and inefficiencies; contributed to refining AI models through detailed analysis and ranking of code outputs; and employed RLHF techniques to iteratively improve model performance based on user-generated evaluations.
   - title: Data Engineering intern
     duration: Jun 2024 - Sep 2024
-    company: Max Mara | Italy
-    description: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    company: Max Mara | Remote
+    description: Built and refined data pipelines, integrated diverse sources, ensured data quality, and documented workflows. Helped drive more informed, data-driven decisions across the company by collaborating with analytics and business teams.
   - title: Luxurious Sales Consultant
     duration: Sep 2020 - Oct 2023
-    company: Max Mara | Vancouver
-    description: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    company: Max Mara | Canada
+    description: Exceeded $900,000 in annual personal sales. Demonstrated expertise in understanding and meeting the unique needs of luxury customers and building up clienteles.
   - title: Industrial Designer
     duration: Aug 2014 - Jun 2020
-    company: Hon Hai (Foxconn) Technology Group | China, Taiwan
-    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    company: Hon Hai (Foxconn) Technology Group | China & Taiwan
+    description: Led the end-to-end design and development of OEM/ODM smartphones and wearable devices from concept to production, ensuring adherence to timelines, budgets, and quality standards. Simultaneously managed multiple Nokia projects, allocating resources, mitigating risks, and delivering milestones on schedule. Regularly presented concepts and updates to clients, incorporating feedback to meet expectations and business goals.
+  - title: Product Design intern
+    duration: Mar 2014 - Aug 2014
+    company: Studio if | Taiwan
+    description: Design prototype for products including circuit design, manipulating and retrieving data from sensors incorporated with Arduino. 3D model making and rendering.
 projects:
   - name: Clippio
-    description: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    contribution: Creator.
+    stack: AWS SNS, Node.js, Express, MongoDB, EJS, OCR, Heroku
+    description: A platform that allows for seamless file/text upload for instant access across all devices. Clippio features an incredibly simple interface that allows for uploading with or without an account. Secure encryption ensures that all files are safe and secure.
+    contribution: Full-stack Developer
   - name: Stack Moxie
-    description: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    contribution: Contributor.
+    stack: Typescript, YAML, Crank, Cogs, Docker, Multiple AI Models
+    description: Leveraged LLMs to automate creation of behavioral scenarios and developing an algorithm to measure the accuracy of the model output. Used Crank framework to run integrations(cogs) against generative AI model APIs.
+    contribution: Developer
   - name: Vacapal
-    description: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    contribution: Creator and maintainer.
+    stack: Socket.io, Gpt-3.5-turbo model, Node.js, MongoDB
+    description: An AI-powered travel planning / coordination app to help friends make informed decisions and bucket list suggestions, with the help of sentiment analysis in chat rooms.
+    contribution: Full-stack Developer
+  - name: EcoStack
+    stack: Java, JavaFX, Maven, Jackson
+    description: A puzzle game with an environmental twist. The player's goal is to manage waste by recycling and composting, aligning it with ecological themes. It serves a social purpose by raising awareness about recycling and waste management.
+    contribution: Game Developer
+  - name: Shopping Website Chatbot Integration with AWS
+    stack: React, Node.js, AWS - Lex, Lambda, Cognito, DynamoDB, Elastic Beamstalk
+    description: An e-commerce platform featuring AWS Lex chatbot integration, seamlessly connecting to AWS Lambda, Amazon Cognito, Amazon DynamoDB, and other AWS services.
+    contribution: Backend Developer
+  - name: Project Management System Integration with AWS
+    stack: React, Python, Node.js, AWS - Lambda, RDS, SNS, Cognito, Amplify, API-gateway
+    description: A proof-of-concept enterprise project management solution seamlessly integrated with AWS services.
+    contribution: Full-stack Developer
 languages:
   - name: English
     proficiency: Work proficiency
