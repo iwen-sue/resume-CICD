@@ -40,6 +40,10 @@ a {
   html {
     font-size: 12px; }
 
+  body .container {
+    max-width: 90%;
+  }
+
   .print {
     display: none; } }
 header {
